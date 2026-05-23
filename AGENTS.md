@@ -84,6 +84,7 @@ npm run lint              # se configurado
 | `.docs/PRD.md` | Visão de produto, personas, funcionalidades MVP |
 | `.DESIGN.md` | Sistema de design (tokens, componentes, layout) |
 | `.opencode.json` | Configuração de agentes (build, plan, code-reviewer) |
+| `.agents/skills/*` | Workflows de agentes especializados (create-prd, execute-task, review-round, etc.) |
 
 ---
 
