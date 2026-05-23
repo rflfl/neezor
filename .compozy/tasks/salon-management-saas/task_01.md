@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: Multi-tenancy Foundation
 type: backend
 complexity: high
@@ -34,20 +34,20 @@ Establish the multi-tenancy infrastructure that isolates every piece of data by 
 </requirements>
 
 ## Subtasks
-- [ ] 1.1 Create migration: `tenants` table (id, name, slug, subscription_plan, status, timestamps)
-- [ ] 1.2 Create Tenant Eloquent model
-- [ ] 1.3 Create migration: add `tenant_id` to `users` table, add role column (admin/professional/reception)
-- [ ] 1.4 Create `TenantScope` global scope in `App/Models/Scopes/`
-- [ ] 1.5 Create `BelongsToTenant` trait in `App/Models/Traits/`
-- [ ] 1.6 Create `ScopeTenantAware` trait in `App/Models/Traits/`
-- [ ] 1.7 Create `TenantContext` service in `App/Services/`
-- [ ] 1.8 Create `EnsureTenantIsSet` middleware in `App/Http/Middleware/`
-- [ ] 1.9 Update `config/database.php` for MySQL with utf8mb4/unicode_ci and InnoDB engine
-- [ ] 1.10 Update `HandleInertiaRequests` middleware to share tenant data
-- [ ] 1.11 Update Jetstream `CreateNewUser` action to accept `tenant_id`
-- [ ] 1.12 Install `moneyphp/money` package if not already installed
-- [ ] 1.13 Create base test trait `PerformsTenantTests` for test setup
-- [ ] 1.14 Write unit and integration tests
+- [x] 1.1 Create migration: `tenants` table (id, name, slug, subscription_plan, status, timestamps)
+- [x] 1.2 Create Tenant Eloquent model
+- [x] 1.3 Create migration: add `tenant_id` to `users` table, add role column (admin/professional/reception)
+- [x] 1.4 Create `TenantScope` global scope in `App/Models/Scopes/`
+- [x] 1.5 Create `BelongsToTenant` trait in `App/Models/Traits/`
+- [x] 1.6 Create `ScopeTenantAware` trait in `App/Models/Traits/`
+- [x] 1.7 Create `TenantContext` service in `App/Services/`
+- [x] 1.8 Create `EnsureTenantIsSet` middleware in `App/Http/Middleware/`
+- [x] 1.9 Update `config/database.php` for MySQL with utf8mb4/unicode_ci and InnoDB engine
+- [x] 1.10 Update `HandleInertiaRequests` middleware to share tenant data
+- [x] 1.11 Update Jetstream `CreateNewUser` action to accept `tenant_id`
+- [x] 1.12 Install `moneyphp/money` package if not already installed
+- [x] 1.13 Create base test trait `PerformsTenantTests` for test setup
+- [x] 1.14 Write unit and integration tests
 
 ## Implementation Details
 
