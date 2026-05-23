@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: User + Professional Models
 type: backend
 complexity: medium
@@ -36,16 +36,16 @@ Extend the Jetstream User model with tenant awareness and role support, and crea
 </requirements>
 
 ## Subtasks
-- [ ] 2.1 Migration: create `professionals` table
-- [ ] 2.2 Create Professional Eloquent model with tenant traits
-- [ ] 2.3 Update User model: add tenant_id, role, BelongsToTenant, ScopeTenantAware
-- [ ] 2.4 Add User → Professional relationship
-- [ ] 2.5 Create migration: update users table with tenant_id and role
-- [ ] 2.6 Create ProfessionalController (thin, delegation to domain)
-- [ ] 2.7 Register routes for professionals CRUD
-- [ ] 2.8 Create ProfessionalFactory
-- [ ] 2.9 Write unit tests for Professional model
-- [ ] 2.10 Write feature tests for CRUD endpoints
+- [x] 2.1 Migration: create `professionals` table
+- [x] 2.2 Create Professional Eloquent model with tenant traits
+- [x] 2.3 Update User model: add tenant_id, role, BelongsToTenant, ScopeTenantAware
+- [x] 2.4 Add User → Professional relationship
+- [x] 2.5 Create migration: update users table with tenant_id and role
+- [x] 2.6 Create ProfessionalController (thin, delegation to domain)
+- [x] 2.7 Register routes for professionals CRUD
+- [x] 2.8 Create ProfessionalFactory
+- [x] 2.9 Write unit tests for Professional model
+- [x] 2.10 Write feature tests for CRUD endpoints
 
 ## Implementation Details
 

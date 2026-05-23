@@ -5,7 +5,7 @@
 | # | Title | Status | Complexity | Dependencies |
 |---|---|---|---|---|
 | 01 | Multi-tenancy Foundation | completed | high | — |
-| 02 | User + Professional Models | pending | medium | task_01 |
+| 02 | User + Professional Models | completed | medium | task_01 |
 | 03 | Domain/Services + Domain/Customers | pending | medium | task_01 |
 | 04 | Domain/Scheduling — Core | pending | high | task_02, task_03 |
 | 05 | Domain/Packages | pending | high | task_04 |

@@ -16,11 +16,11 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use BelongsToTenant;
-
     use HasApiTokens;
 
     /** @use HasFactory<UserFactory> */
     use HasFactory;
+
     use HasProfilePhoto;
     use Notifiable;
     use ScopeTenantAware;
@@ -72,5 +72,10 @@ class User extends Authenticatable
     public function tenant(): BelongsTo
     {
         return $this->belongsTo(Tenant::class);
+    }
+
+    public function professional(): BelongsTo
+    {
+        return $this->belongsTo(Professional::class);
     }
 }
