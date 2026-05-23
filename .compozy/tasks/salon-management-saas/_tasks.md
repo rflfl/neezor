@@ -7,8 +7,8 @@
 | 01 | Multi-tenancy Foundation | completed | high | — |
 | 02 | User + Professional Models | completed | medium | task_01 |
 | 03 | Domain/Services + Domain/Customers | completed | medium | task_01 |
-| 04 | Domain/Scheduling — Core | pending | high | task_02, task_03 |
-| 05 | Domain/Packages | pending | high | task_04 |
+| 04 | Domain/Scheduling — Core | completed | high | task_02, task_03 |
+| 05 | Domain/Packages | completed | high | task_04 |
 | 06 | Domain/Cashbox | pending | high | task_04 |
 | 07 | Domain/Commission | pending | high | task_06 |
 | 08 | Domain/Expenses | pending | medium | task_06 |

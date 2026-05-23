@@ -1,6 +1,9 @@
 <?php
 
+use App\Domain\Cashbox\Controllers\CashboxController;
+use App\Http\Controllers\Dashboard\AppointmentController;
 use App\Http\Controllers\Dashboard\ClientController;
+use App\Http\Controllers\Dashboard\PackageController;
 use App\Http\Controllers\Dashboard\ProfessionalController;
 use App\Http\Controllers\Dashboard\ServiceController;
 use Illuminate\Foundation\Application;
@@ -54,4 +57,43 @@ Route::middleware([
         ->name('dashboard.clients.update');
     Route::delete('/dashboard/clients/{client}', [ClientController::class, 'destroy'])
         ->name('dashboard.clients.destroy');
+
+    Route::get('/dashboard/calendar', [AppointmentController::class, 'index'])
+        ->name('dashboard.calendar.index');
+    Route::get('/dashboard/calendar/{appointment}', [AppointmentController::class, 'show'])
+        ->name('dashboard.calendar.show');
+    Route::post('/dashboard/calendar', [AppointmentController::class, 'store'])
+        ->name('dashboard.calendar.store');
+    Route::put('/dashboard/calendar/{appointment}', [AppointmentController::class, 'update'])
+        ->name('dashboard.calendar.update');
+    Route::delete('/dashboard/calendar/{appointment}', [AppointmentController::class, 'destroy'])
+        ->name('dashboard.calendar.destroy');
+
+    Route::get('/dashboard/packages', [PackageController::class, 'index'])
+        ->name('dashboard.packages.index');
+    Route::post('/dashboard/packages', [PackageController::class, 'store'])
+        ->name('dashboard.packages.store');
+    Route::get('/dashboard/packages/{package}', [PackageController::class, 'show'])
+        ->name('dashboard.packages.show');
+    Route::put('/dashboard/packages/{package}', [PackageController::class, 'update'])
+        ->name('dashboard.packages.update');
+    Route::delete('/dashboard/packages/{package}', [PackageController::class, 'destroy'])
+        ->name('dashboard.packages.destroy');
+    Route::get('/dashboard/packages/{package}/sessions', [PackageController::class, 'sessions'])
+        ->name('dashboard.packages.sessions');
+    Route::post('/dashboard/packages/purchase', [PackageController::class, 'purchase'])
+        ->name('dashboard.packages.purchase');
+
+    Route::get('/dashboard/cashbox', [CashboxController::class, 'index'])
+        ->name('dashboard.cashbox.index');
+    Route::post('/dashboard/cashbox', [CashboxController::class, 'store'])
+        ->name('dashboard.cashbox.store');
+    Route::post('/dashboard/cashbox/entry', [CashboxController::class, 'entry'])
+        ->name('dashboard.cashbox.entry');
+    Route::post('/dashboard/cashbox/expense', [CashboxController::class, 'expense'])
+        ->name('dashboard.cashbox.expense');
+    Route::post('/dashboard/cashbox/close', [CashboxController::class, 'close'])
+        ->name('dashboard.cashbox.close');
+    Route::get('/dashboard/cashbox/categories', [CashboxController::class, 'categories'])
+        ->name('dashboard.cashbox.categories');
 });

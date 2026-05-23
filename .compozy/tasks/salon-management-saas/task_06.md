@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: Domain/Cashbox
 type: backend
 complexity: high
@@ -39,24 +39,24 @@ Build the daily cashbox engine (Domain/Cashbox). This is the financial core of t
 </requirements>
 
 ## Subtasks
-- [ ] 6.1 Migration: create `expense_categories` table
-- [ ] 6.2 Migration: create `cashbox_days` table
-- [ ] 6.3 Migration: create `cash_movements` table
-- [ ] 6.4 Create Domain/Cashbox/Enums/PaymentMethod.php
-- [ ] 6.5 Create Domain/Cashbox/Enums/CashboxStatus.php
-- [ ] 6.6 Create Domain/Cashbox/Models/CashboxDay.php
-- [ ] 6.7 Create Domain/Cashbox/Models/CashMovement.php
-- [ ] 6.8 Create Domain/Cashbox/Models/ExpenseCategory.php
-- [ ] 6.9 Create Domain/Cashbox/Contracts/CashboxServiceInterface.php
-- [ ] 6.10 Create Domain/Cashbox/Services/CashboxService.php
-- [ ] 6.11 Create CashboxController
-- [ ] 6.12 Register cashbox routes
-- [ ] 6.13 Update AppointmentService: auto-create cash entry on completion
-- [ ] 6.14 Create factories
-- [ ] 6.15 Write unit tests: opening balance, recording entries, expenses
-- [ ] 6.16 Write unit tests: closing and reconciliation (match and mismatch)
-- [ ] 6.17 Write integration test: open → entries → expense → close flow
-- [ ] 6.18 Write integration test: appointment completion triggers cash entry
+- [x] 6.1 Migration: create `expense_categories` table
+- [x] 6.2 Migration: create `cashbox_days` table
+- [x] 6.3 Migration: create `cash_movements` table
+- [x] 6.4 Create Domain/Cashbox/Enums/PaymentMethod.php
+- [x] 6.5 Create Domain/Cashbox/Enums/CashboxStatus.php
+- [x] 6.6 Create Domain/Cashbox/Models/CashboxDay.php
+- [x] 6.7 Create Domain/Cashbox/Models/CashMovement.php
+- [x] 6.8 Create Domain/Cashbox/Models/ExpenseCategory.php
+- [x] 6.9 Create Domain/Cashbox/Contracts/CashboxServiceInterface.php
+- [x] 6.10 Create Domain/Cashbox/Services/CashboxService.php
+- [x] 6.11 Create CashboxController
+- [x] 6.12 Register cashbox routes
+- [x] 6.13 Update AppointmentService: auto-create cash entry on completion
+- [x] 6.14 Create factories
+- [x] 6.15 Write unit tests: opening balance, recording entries, expenses
+- [x] 6.16 Write unit tests: closing and reconciliation (match and mismatch)
+- [x] 6.17 Write integration test: open → entries → expense → close flow
+- [x] 6.18 Write integration test: appointment completion triggers cash entry
 
 ## Implementation Details
 

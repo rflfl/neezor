@@ -4,6 +4,8 @@ namespace Tests\Unit\Models;
 
 use App\Domain\Customers\Models\Client;
 use App\Domain\Scheduling\Models\Appointment;
+use App\Domain\Services\Models\Service;
+use App\Models\Professional;
 use App\Models\Tenant;
 use App\Services\TenantContext;
 use Carbon\Carbon;
@@ -49,6 +51,18 @@ class ClientTest extends TestCase
     public function test_inactive_scope_returns_clients_with_no_recent_appointments(): void
     {
         $tenant = Tenant::factory()->create();
+        $professional = Professional::withoutGlobalScopes()->create([
+            'tenant_id' => $tenant->id,
+            'name' => 'Ana',
+            'email' => 'ana@example.com',
+            'commission_rate' => 40.00,
+        ]);
+        $service = Service::withoutGlobalScopes()->create([
+            'tenant_id' => $tenant->id,
+            'name' => 'Corte',
+            'duration_minutes' => 60,
+            'price' => 5000,
+        ]);
 
         $activeClient = Client::withoutGlobalScopes()->create([
             'tenant_id' => $tenant->id,
@@ -65,6 +79,8 @@ class ClientTest extends TestCase
         Appointment::withoutGlobalScopes()->create([
             'tenant_id' => $tenant->id,
             'client_id' => $activeClient->id,
+            'professional_id' => $professional->id,
+            'service_id' => $service->id,
             'start_at' => Carbon::now()->subDays(10),
             'end_at' => Carbon::now()->subDays(10)->addHours(1),
             'status' => 'completed',
@@ -82,6 +98,18 @@ class ClientTest extends TestCase
     public function test_active_recently_scope_returns_clients_with_recent_appointments(): void
     {
         $tenant = Tenant::factory()->create();
+        $professional = Professional::withoutGlobalScopes()->create([
+            'tenant_id' => $tenant->id,
+            'name' => 'Ana',
+            'email' => 'ana@example.com',
+            'commission_rate' => 40.00,
+        ]);
+        $service = Service::withoutGlobalScopes()->create([
+            'tenant_id' => $tenant->id,
+            'name' => 'Corte',
+            'duration_minutes' => 60,
+            'price' => 5000,
+        ]);
 
         $activeClient = Client::withoutGlobalScopes()->create([
             'tenant_id' => $tenant->id,
@@ -98,6 +126,8 @@ class ClientTest extends TestCase
         Appointment::withoutGlobalScopes()->create([
             'tenant_id' => $tenant->id,
             'client_id' => $activeClient->id,
+            'professional_id' => $professional->id,
+            'service_id' => $service->id,
             'start_at' => Carbon::now()->subDays(10),
             'end_at' => Carbon::now()->subDays(10)->addHours(1),
             'status' => 'completed',
