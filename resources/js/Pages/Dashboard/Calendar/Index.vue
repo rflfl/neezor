@@ -220,6 +220,35 @@ const hasConflict = (professionalId, hour) => {
     const existing = getAppointmentAtSlot(professionalId, hour);
     return existing && existing.status === 'cancelled';
 };
+
+const copyBookingLink = () => {
+    const slug = usePage().props.tenant?.slug || '';
+    if (!slug) {
+        alert('Configuracao de salao nao encontrada.');
+        return;
+    }
+
+    fetch(route('booking.token.generate', slug) + '?tenant_id=' + usePage().props.tenant_id, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]')?.content,
+        },
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.url) {
+                navigator.clipboard.writeText(data.url).then(() => {
+                    alert('Link de agendamento copiado!');
+                });
+            } else {
+                alert('Erro ao gerar link.');
+            }
+        })
+        .catch(() => {
+            alert('Erro ao conectar.');
+        });
+};
 </script>
 
 <template>
@@ -238,6 +267,16 @@ const hasConflict = (professionalId, hour) => {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
                     Novo Agendamento
+                </button>
+                <button
+                    @click="copyBookingLink"
+                    class="inline-flex items-center px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700"
+                    data-testid="copy-booking-link-button"
+                >
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg>
+                    Copiar Link Agendamento
                 </button>
             </div>
         </template>

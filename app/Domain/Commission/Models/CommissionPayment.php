@@ -2,6 +2,7 @@
 
 namespace App\Domain\Commission\Models;
 
+use App\Models\Traits\BelongsToTenant;
 use App\Models\Traits\ScopeTenantAware;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,8 +12,10 @@ class CommissionPayment extends Model
 {
     use HasFactory;
     use ScopeTenantAware;
+    use BelongsToTenant;
 
     protected $fillable = [
+        'tenant_id',
         'commission_run_id',
         'amount',
         'paid_at',

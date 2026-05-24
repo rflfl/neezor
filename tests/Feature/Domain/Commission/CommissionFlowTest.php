@@ -22,7 +22,7 @@ class CommissionFlowTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->tenant = Tenant::factory()->create();
+        $this->tenant = Tenant::factory()->create(['has_completed_onboarding' => true]);
         $this->user = User::factory()->create(['tenant_id' => $this->tenant->id]);
         $this->professional = Professional::factory()->create([
             'tenant_id' => $this->tenant->id,

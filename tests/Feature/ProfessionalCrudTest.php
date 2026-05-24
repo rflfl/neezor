@@ -21,7 +21,7 @@ class ProfessionalCrudTest extends TestCase
     {
         parent::setUp();
 
-        $this->tenant = Tenant::factory()->create();
+        $this->tenant = Tenant::factory()->create(['has_completed_onboarding' => true]);
         $this->user = User::withoutGlobalScopes()->create([
             'name' => 'Admin User',
             'email' => 'admin@example.com',

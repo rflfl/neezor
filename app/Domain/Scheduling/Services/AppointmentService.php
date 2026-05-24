@@ -5,13 +5,16 @@ namespace App\Domain\Scheduling\Services;
 use App\Domain\Cashbox\Contracts\CashboxServiceInterface;
 use App\Domain\Cashbox\Enums\CashboxStatus;
 use App\Domain\Commission\Contracts\CommissionServiceInterface;
+use App\Domain\Notifications\Jobs\SendReminderJob;
+use App\Domain\Notifications\Jobs\SendConfirmationJob;
+use App\Domain\Notifications\Jobs\SendCancellationJob;
 use App\Domain\Packages\Contracts\PackageServiceInterface;
 use App\Domain\Scheduling\Contracts\AvailabilityServiceInterface;
 use App\Domain\Scheduling\Models\Appointment;
 use App\Domain\Services\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Carbon as SupportCarbon;
+use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 
@@ -44,7 +47,14 @@ class AppointmentService
         $data['start_at'] = $startAt;
         $data['status'] = $data['status'] ?? Appointment::STATUS_SCHEDULED;
 
-        return Appointment::create($data);
+        $appointment = Appointment::create($data);
+
+        $status = $data['status'] ?? Appointment::STATUS_SCHEDULED;
+        if ($status !== Appointment::STATUS_CANCELLED && $status !== Appointment::STATUS_NO_SHOW) {
+            SendReminderJob::dispatch($appointment->id);
+        }
+
+        return $appointment;
     }
 
     public function update(Appointment $appointment, array $data): Appointment
@@ -108,6 +118,10 @@ class AppointmentService
             if ($this->commissionService !== null) {
                 $this->commissionService->calculateForAppointment($appointment);
             }
+        }
+
+        if ($status === Appointment::STATUS_CANCELLED) {
+            Queue::push(new SendCancellationJob($appointment->id, 'Atendimento cancelado'));
         }
 
         return $appointment->fresh();

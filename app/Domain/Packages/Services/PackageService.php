@@ -95,11 +95,19 @@ class PackageService implements PackageServiceInterface
         }
 
         return DB::transaction(function () use ($session, $appointment) {
-            $session->decrement('sessions_remaining');
-            $session->update([
-                'used_at' => Carbon::now(),
-                'appointment_id' => $appointment->id,
-            ]);
+            $updated = PackageSession::where('id', $session->id)
+                ->where('sessions_remaining', '>', 0)
+                ->update([
+                    'sessions_remaining' => DB::raw('sessions_remaining - 1'),
+                    'used_at' => Carbon::now(),
+                    'appointment_id' => $appointment->id,
+                ]);
+
+            if ($updated === 0) {
+                return false;
+            }
+
+            $session->refresh();
             return true;
         });
     }

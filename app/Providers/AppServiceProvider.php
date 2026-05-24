@@ -6,6 +6,8 @@ use App\Domain\Cashbox\Contracts\CashboxServiceInterface;
 use App\Domain\Cashbox\Services\CashboxService;
 use App\Domain\Commission\Contracts\CommissionServiceInterface;
 use App\Domain\Commission\Services\CommissionService;
+use App\Domain\Notifications\Contracts\NotificationServiceInterface;
+use App\Domain\Notifications\Drivers\MockWhatsAppDriver;
 use App\Domain\Packages\Contracts\PackageServiceInterface;
 use App\Domain\Packages\Services\PackageService;
 use App\Domain\Scheduling\Contracts\AvailabilityServiceInterface;
@@ -21,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(PackageServiceInterface::class, PackageService::class);
         $this->app->singleton(CashboxServiceInterface::class, CashboxService::class);
         $this->app->singleton(CommissionServiceInterface::class, CommissionService::class);
+        $this->app->singleton(NotificationServiceInterface::class, MockWhatsAppDriver::class);
 
         $this->app->singleton(AppointmentService::class, function ($app) {
             return new AppointmentService(

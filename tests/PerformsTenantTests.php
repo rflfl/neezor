@@ -32,6 +32,9 @@ trait PerformsTenantTests
             'status' => 'active',
         ]);
 
+        $this->tenantA->update(['has_completed_onboarding' => true]);
+        $this->tenantB->update(['has_completed_onboarding' => true]);
+
         $this->userA = User::withoutGlobalScopes()->create([
             'name' => 'User A',
             'email' => 'usera'.uniqid().'@example.com',

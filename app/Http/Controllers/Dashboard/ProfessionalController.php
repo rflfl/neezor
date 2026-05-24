@@ -66,4 +66,30 @@ class ProfessionalController extends Controller
         return redirect()->route('dashboard.professionals.index')
             ->with('success', 'Professional deleted successfully.');
     }
+
+    public function bulkStore(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'professionals' => 'required|array',
+            'professionals.*.name' => 'required|string|max:255',
+            'professionals.*.email' => 'nullable|email|max:255',
+            'professionals.*.phone' => 'nullable|string|max:20',
+            'professionals.*.commission_rate' => 'nullable|numeric|min:0|max:100',
+        ]);
+
+        $tenantId = $request->user()->tenant_id;
+
+        foreach ($validated['professionals'] as $data) {
+            Professional::create([
+                'tenant_id' => $tenantId,
+                'name' => $data['name'],
+                'email' => $data['email'] ?? null,
+                'phone' => $data['phone'] ?? null,
+                'commission_rate' => $data['commission_rate'] ?? 40,
+                'is_active' => true,
+            ]);
+        }
+
+        return redirect()->back();
+    }
 }

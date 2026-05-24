@@ -15,21 +15,23 @@ class CashboxService implements CashboxServiceInterface
 {
     public function open(int $tenantId, Carbon $date, int $openingBalance, ?int $userId = null): CashboxDay
     {
-        $existingDay = CashboxDay::withoutGlobalScopes()
-            ->where('tenant_id', $tenantId)
-            ->whereDate('date', $date->toDateString())
-            ->first();
+        return DB::transaction(function () use ($tenantId, $date, $openingBalance) {
+            $existingDay = CashboxDay::withoutGlobalScopes()
+                ->where('tenant_id', $tenantId)
+                ->whereDate('date', $date->toDateString())
+                ->first();
 
-        if ($existingDay) {
-            throw new InvalidArgumentException('Cashbox day already exists for this date.');
-        }
+            if ($existingDay) {
+                throw new InvalidArgumentException('Cashbox day already exists for this date.');
+            }
 
-        return CashboxDay::withoutGlobalScopes()->create([
-            'tenant_id' => $tenantId,
-            'date' => $date->toDateString(),
-            'opening_balance' => $openingBalance,
-            'status' => CashboxStatus::OPEN,
-        ]);
+            return CashboxDay::withoutGlobalScopes()->create([
+                'tenant_id' => $tenantId,
+                'date' => $date->toDateString(),
+                'opening_balance' => $openingBalance,
+                'status' => CashboxStatus::OPEN,
+            ]);
+        });
     }
 
     public function recordEntry(
@@ -46,16 +48,18 @@ class CashboxService implements CashboxServiceInterface
             throw new InvalidArgumentException('Entry amount must be positive.');
         }
 
-        return CashMovement::withoutGlobalScopes()->create([
-            'tenant_id' => $cashboxDay->tenant_id,
-            'cashbox_day_id' => $cashboxDay->id,
-            'type' => CashMovementType::ENTRY,
-            'amount' => $amount,
-            'payment_method' => $paymentMethod,
-            'appointment_id' => $appointmentId,
-            'note' => $note,
-            'created_by' => $userId,
-        ]);
+        return DB::transaction(function () use ($cashboxDay, $amount, $paymentMethod, $appointmentId, $note, $userId) {
+            return CashMovement::withoutGlobalScopes()->create([
+                'tenant_id' => $cashboxDay->tenant_id,
+                'cashbox_day_id' => $cashboxDay->id,
+                'type' => CashMovementType::ENTRY,
+                'amount' => $amount,
+                'payment_method' => $paymentMethod,
+                'appointment_id' => $appointmentId,
+                'note' => $note,
+                'created_by' => $userId,
+            ]);
+        });
     }
 
     public function recordExpense(
@@ -72,28 +76,32 @@ class CashboxService implements CashboxServiceInterface
             throw new InvalidArgumentException('Expense amount must be positive.');
         }
 
-        return CashMovement::withoutGlobalScopes()->create([
-            'tenant_id' => $cashboxDay->tenant_id,
-            'cashbox_day_id' => $cashboxDay->id,
-            'type' => CashMovementType::EXPENSE,
-            'amount' => $amount,
-            'payment_method' => $paymentMethod,
-            'expense_category_id' => $categoryId,
-            'note' => $note,
-            'created_by' => $userId,
-        ]);
+        return DB::transaction(function () use ($cashboxDay, $amount, $paymentMethod, $categoryId, $note, $userId) {
+            return CashMovement::withoutGlobalScopes()->create([
+                'tenant_id' => $cashboxDay->tenant_id,
+                'cashbox_day_id' => $cashboxDay->id,
+                'type' => CashMovementType::EXPENSE,
+                'amount' => $amount,
+                'payment_method' => $paymentMethod,
+                'expense_category_id' => $categoryId,
+                'note' => $note,
+                'created_by' => $userId,
+            ]);
+        });
     }
 
     public function close(CashboxDay $cashboxDay, int $closingBalance, ?int $userId = null): CashboxDay
     {
         $this->ensureCashboxIsOpen($cashboxDay);
 
-        $cashboxDay->update([
-            'closing_balance' => $closingBalance,
-            'status' => CashboxStatus::CLOSED,
-        ]);
+        return DB::transaction(function () use ($cashboxDay, $closingBalance) {
+            $cashboxDay->update([
+                'closing_balance' => $closingBalance,
+                'status' => CashboxStatus::CLOSED,
+            ]);
 
-        return $cashboxDay->fresh();
+            return $cashboxDay->fresh();
+        });
     }
 
     public function getCurrentDay(int $tenantId): ?CashboxDay

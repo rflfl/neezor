@@ -16,6 +16,7 @@ class TenantFactory extends Factory
             'slug' => $this->faker->unique()->slug(2),
             'subscription_plan' => 'basic',
             'status' => 'active',
+            'has_completed_onboarding' => true,
         ];
     }
 

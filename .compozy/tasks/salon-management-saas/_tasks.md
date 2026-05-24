@@ -13,10 +13,10 @@
 | 07 | Domain/Commission | completed | high | task_06 |
 | 08 | Domain/Expenses | completed | medium | task_06 |
 | 09 | Frontend: Calendar + Appointment CRUD | completed | high | task_07, task_08 |
-| 10 | Frontend: Clients + Services + Packages | pending | medium | task_09 |
-| 11 | Frontend: Cashbox + Commissions + DRE | pending | medium | task_09 |
+| 10 | Frontend: Clients + Services + Packages | completed | medium | task_09 |
+| 11 | Frontend: Cashbox + Commissions + DRE | completed | medium | task_09 |
 | 12 | Public Booking Portal | pending | high | task_09 |
-| 13 | Domain/Notifications + Onboarding | pending | medium | task_09 |
+| 13 | Domain/Notifications + Onboarding | completed | medium | task_09 |
 
 ## Build Order
 

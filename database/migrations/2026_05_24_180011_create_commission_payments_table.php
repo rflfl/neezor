@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('commission_payments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('tenant_id')->constrained()->cascadeOnDelete();
             $table->foreignId('commission_run_id')->constrained('commission_runs')->cascadeOnDelete();
             $table->unsignedBigInteger('amount');
             $table->timestamp('paid_at');

@@ -25,7 +25,9 @@ class CommissionService implements CommissionServiceInterface
 
         $rate = $this->getEffectiveRate($appointment->professional_id, $appointment->service_id);
 
-        return (int) round($price * $rate);
+        $priceCents = (int) round($price);
+        $rateBps = (int) round($rate * 10000);
+        return (int) round($priceCents * $rateBps / 10000);
     }
 
     public function calculateForPeriod(int $tenantId, int $professionalId, Carbon $start, Carbon $end): Collection
@@ -51,6 +53,12 @@ class CommissionService implements CommissionServiceInterface
             ->where('period_start', $start->toDateString())
             ->where('period_end', $end->toDateString())
             ->first();
+
+        if ($run && $run->status === CommissionRunStatus::PAID) {
+            throw new InvalidArgumentException(
+                'Cannot recalculate a paid commission run. Reverse the payment first.'
+            );
+        }
 
         if ($run) {
             $run->update([
@@ -100,6 +108,7 @@ class CommissionService implements CommissionServiceInterface
         }
 
         $payment = CommissionPayment::withoutGlobalScopes()->create([
+            'tenant_id' => $tenantId,
             'commission_run_id' => $commissionRunId,
             'amount' => $amount,
             'paid_at' => $paidAt,

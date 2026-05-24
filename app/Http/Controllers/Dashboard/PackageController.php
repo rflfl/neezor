@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Domain\Packages\Contracts\PackageServiceInterface;
 use App\Domain\Packages\Models\Package;
 use App\Domain\Services\Models\Service;
+use App\Domain\Customers\Models\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,9 +21,16 @@ class PackageController extends Controller
     public function index(): Response
     {
         $packages = Package::with('services')->get();
+        $services = Service::where('is_active', true)->get()->map(fn($s) => [
+            'id' => $s->id,
+            'name' => $s->name,
+            'price' => $s->price,
+            'duration_minutes' => $s->duration_minutes,
+        ]);
 
         return Inertia::render('Dashboard/Packages/Index', [
             'packages' => $packages,
+            'services' => $services,
         ]);
     }
 
@@ -99,11 +107,17 @@ class PackageController extends Controller
 
     public function sessions(Package $package): Response
     {
+        $package->load('services');
         $sessions = $this->packageService->getPackageSessions($package->id);
+        $clients = Client::where('is_active', true)->get()->map(fn($c) => [
+            'id' => $c->id,
+            'name' => $c->name,
+        ]);
 
         return Inertia::render('Dashboard/Packages/Sessions', [
             'package' => $package,
             'sessions' => $sessions,
+            'clients' => $clients,
         ]);
     }
 

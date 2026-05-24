@@ -13,10 +13,11 @@ class TenantScope implements Scope
     {
         $tenantId = TenantContext::current();
 
-        if ($tenantId !== null) {
-            $builder->where($model->getTable().'.tenant_id', $tenantId);
-        } else {
-            $builder->where($model->getTable().'.tenant_id', '=', null);
+        if ($tenantId === null) {
+            $builder->where($model->getTable().'.tenant_id', -1);
+            return;
         }
+
+        $builder->where($model->getTable().'.tenant_id', $tenantId);
     }
 }

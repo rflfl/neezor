@@ -29,7 +29,9 @@ class ServiceController extends Controller
             'is_active' => 'boolean',
         ]);
 
-        Service::create($validated);
+        Service::create(array_merge($validated, [
+            'tenant_id' => $request->user()->tenant_id,
+        ]));
 
         return redirect()->route('dashboard.services.index')
             ->with('success', 'Service created successfully.');
@@ -56,5 +58,29 @@ class ServiceController extends Controller
 
         return redirect()->route('dashboard.services.index')
             ->with('success', 'Service deleted successfully.');
+    }
+
+    public function bulkStore(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'services' => 'required|array',
+            'services.*.name' => 'required|string|max:255',
+            'services.*.duration_minutes' => 'required|integer|min:1',
+            'services.*.price' => 'required|integer|min:0',
+        ]);
+
+        $tenantId = $request->user()->tenant_id;
+
+        foreach ($validated['services'] as $data) {
+            Service::create([
+                'tenant_id' => $tenantId,
+                'name' => $data['name'],
+                'duration_minutes' => $data['duration_minutes'],
+                'price' => $data['price'],
+                'is_active' => true,
+            ]);
+        }
+
+        return redirect()->back();
     }
 }

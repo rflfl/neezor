@@ -51,6 +51,18 @@ const logout = () => {
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </NavLink>
+                                <NavLink :href="route('dashboard.cashbox.index')" :active="route().current('dashboard.cashbox.*')">
+                                    Caixa
+                                </NavLink>
+                                <NavLink :href="route('dashboard.commissions.index')" :active="route().current('dashboard.commissions.*')">
+                                    Comissões
+                                </NavLink>
+                                <NavLink :href="route('dashboard.dre')" :active="route().current('dashboard.dre')">
+                                    DRE
+                                </NavLink>
+                                <NavLink :href="route('dashboard.expenses.index')" :active="route().current('dashboard.expenses.*')">
+                                    Despesas
+                                </NavLink>
                             </div>
                         </div>
 
@@ -193,6 +205,18 @@ const logout = () => {
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('dashboard.cashbox.index')" :active="route().current('dashboard.cashbox.*')">
+                            Caixa
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('dashboard.commissions.index')" :active="route().current('dashboard.commissions.*')">
+                            Comissões
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('dashboard.dre')" :active="route().current('dashboard.dre')">
+                            DRE
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('dashboard.expenses.index')" :active="route().current('dashboard.expenses.*')">
+                            Despesas
                         </ResponsiveNavLink>
                     </div>
 

@@ -122,6 +122,8 @@ class AvailabilityService implements AvailabilityServiceInterface
             throw new InvalidArgumentException('Time slot conflicts with an existing appointment.');
         }
 
+        $appointment->forceFill(['start_at' => $start, 'end_at' => $end])->save();
+
         return $appointment;
     }
 }

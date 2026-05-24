@@ -25,8 +25,10 @@ class DreService implements DreServiceInterface
 
         $totalCommission = (int) CommissionRun::withoutGlobalScopes()
             ->where('tenant_id', $tenantId)
-            ->whereBetween('period_start', [$start, $end])
-            ->orWhereBetween('period_end', [$start, $end])
+            ->where(function ($q) use ($start, $end) {
+                $q->whereBetween('period_start', [$start->toDateString(), $end->toDateString()])
+                  ->orWhereBetween('period_end', [$start->toDateString(), $end->toDateString()]);
+            })
             ->where('status', '!=', 'draft')
             ->sum('total_commission');
 

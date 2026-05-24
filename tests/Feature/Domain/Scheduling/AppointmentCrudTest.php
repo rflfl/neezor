@@ -28,7 +28,7 @@ class AppointmentCrudTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->tenant = Tenant::factory()->create();
+        $this->tenant = Tenant::factory()->create(['has_completed_onboarding' => true]);
 
         $this->professional = Professional::withoutGlobalScopes()->create([
             'tenant_id' => $this->tenant->id,
