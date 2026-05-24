@@ -1,6 +1,8 @@
 <?php
 
 use App\Domain\Cashbox\Controllers\CashboxController;
+use App\Domain\Commission\Controllers\CommissionController;
+use App\Domain\Expenses\Controllers\ExpenseController;
 use App\Http\Controllers\Dashboard\AppointmentController;
 use App\Http\Controllers\Dashboard\ClientController;
 use App\Http\Controllers\Dashboard\PackageController;
@@ -96,4 +98,26 @@ Route::middleware([
         ->name('dashboard.cashbox.close');
     Route::get('/dashboard/cashbox/categories', [CashboxController::class, 'categories'])
         ->name('dashboard.cashbox.categories');
+
+    Route::get('/dashboard/commissions', [CommissionController::class, 'index'])
+        ->name('dashboard.commissions.index');
+    Route::get('/dashboard/commissions/professional/{professional}', [CommissionController::class, 'byProfessional'])
+        ->name('dashboard.commissions.professional');
+    Route::post('/dashboard/commissions/pay', [CommissionController::class, 'pay'])
+        ->name('dashboard.commissions.pay');
+    Route::post('/dashboard/commissions/adjust', [CommissionController::class, 'adjust'])
+        ->name('dashboard.commissions.adjust');
+
+    Route::get('/dashboard/expenses', [ExpenseController::class, 'index'])
+        ->name('dashboard.expenses.index');
+    Route::post('/dashboard/expenses', [ExpenseController::class, 'store'])
+        ->name('dashboard.expenses.store');
+    Route::get('/dashboard/expenses/{expense}', [ExpenseController::class, 'show'])
+        ->name('dashboard.expenses.show');
+    Route::put('/dashboard/expenses/{expense}', [ExpenseController::class, 'update'])
+        ->name('dashboard.expenses.update');
+    Route::delete('/dashboard/expenses/{expense}', [ExpenseController::class, 'destroy'])
+        ->name('dashboard.expenses.destroy');
+    Route::get('/dashboard/dre', [ExpenseController::class, 'dre'])
+        ->name('dashboard.dre');
 });

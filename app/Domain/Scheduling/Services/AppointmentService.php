@@ -4,6 +4,7 @@ namespace App\Domain\Scheduling\Services;
 
 use App\Domain\Cashbox\Contracts\CashboxServiceInterface;
 use App\Domain\Cashbox\Enums\CashboxStatus;
+use App\Domain\Commission\Contracts\CommissionServiceInterface;
 use App\Domain\Packages\Contracts\PackageServiceInterface;
 use App\Domain\Scheduling\Contracts\AvailabilityServiceInterface;
 use App\Domain\Scheduling\Models\Appointment;
@@ -19,7 +20,8 @@ class AppointmentService
     public function __construct(
         private readonly AvailabilityServiceInterface $availabilityService,
         private readonly ?CashboxServiceInterface $cashboxService = null,
-        private readonly ?PackageServiceInterface $packageService = null
+        private readonly ?PackageServiceInterface $packageService = null,
+        private readonly ?CommissionServiceInterface $commissionService = null
     ) {}
 
     public function create(array $data): Appointment
@@ -101,6 +103,10 @@ class AppointmentService
 
             if ($this->cashboxService !== null) {
                 $this->createCashEntryFromAppointment($appointment);
+            }
+
+            if ($this->commissionService !== null) {
+                $this->commissionService->calculateForAppointment($appointment);
             }
         }
 

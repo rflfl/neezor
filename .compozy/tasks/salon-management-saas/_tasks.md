@@ -9,9 +9,9 @@
 | 03 | Domain/Services + Domain/Customers | completed | medium | task_01 |
 | 04 | Domain/Scheduling — Core | completed | high | task_02, task_03 |
 | 05 | Domain/Packages | completed | high | task_04 |
-| 06 | Domain/Cashbox | pending | high | task_04 |
-| 07 | Domain/Commission | pending | high | task_06 |
-| 08 | Domain/Expenses | pending | medium | task_06 |
+| 06 | Domain/Cashbox | completed | high | task_04 |
+| 07 | Domain/Commission | completed | high | task_06 |
+| 08 | Domain/Expenses | completed | medium | task_06 |
 | 09 | Frontend: Calendar + Appointment CRUD | pending | high | task_07, task_08 |
 | 10 | Frontend: Clients + Services + Packages | pending | medium | task_09 |
 | 11 | Frontend: Cashbox + Commissions + DRE | pending | medium | task_09 |

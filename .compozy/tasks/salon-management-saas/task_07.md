@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: Domain/Commission
 type: backend
 complexity: high
@@ -38,27 +38,27 @@ Build the commission domain (Domain/Commission). This is the most financially se
 </requirements>
 
 ## Subtasks
-- [ ] 7.1 Migration: create `commission_runs` table
-- [ ] 7.2 Migration: create `commission_payments` table
-- [ ] 7.3 Migration: create `professional_service_commissions` table
-- [ ] 7.4 Create Domain/Commission/Models/CommissionRun.php
-- [ ] 7.5 Create Domain/Commission/Models/CommissionPayment.php
-- [ ] 7.6 Create Domain/Commission/Models/ProfessionalServiceCommission.php
-- [ ] 7.7 Create Domain/Commission/Contracts/CommissionServiceInterface.php
-- [ ] 7.8 Create Domain/Commission/Services/CommissionService.php
-- [ ] 7.9 Create CommissionController
-- [ ] 7.10 Register commission routes
-- [ ] 7.11 Update AppointmentService: trigger commission calculation on completion
-- [ ] 7.12 Create factories
-- [ ] 7.13 Write unit tests: calculateForAppointment with default rate
-- [ ] 7.14 Write unit tests: calculateForAppointment with service-specific rate
-- [ ] 7.15 Write unit tests: calculateForPeriod aggregation
-- [ ] 7.16 Write unit tests: recordPayment with note
-- [ ] 7.17 Write unit tests: manual adjustment with mandatory note
-- [ ] 7.18 Write unit tests: zero commission edge case
-- [ ] 7.19 Write integration test: appointment → commission calculated
-- [ ] 7.20 Write integration test: pay commission → payment recorded
-- [ ] 7.21 Coverage: achieve 100% on CommissionService public methods
+- [x] 7.1 Migration: create `commission_runs` table
+- [x] 7.2 Migration: create `commission_payments` table
+- [x] 7.3 Migration: create `professional_service_commissions` table
+- [x] 7.4 Create Domain/Commission/Models/CommissionRun.php
+- [x] 7.5 Create Domain/Commission/Models/CommissionPayment.php
+- [x] 7.6 Create Domain/Commission/Models/ProfessionalServiceCommission.php
+- [x] 7.7 Create Domain/Commission/Contracts/CommissionServiceInterface.php
+- [x] 7.8 Create Domain/Commission/Services/CommissionService.php
+- [x] 7.9 Create CommissionController
+- [x] 7.10 Register commission routes
+- [x] 7.11 Update AppointmentService: trigger commission calculation on completion
+- [x] 7.12 Create factories
+- [x] 7.13 Write unit tests: calculateForAppointment with default rate
+- [x] 7.14 Write unit tests: calculateForAppointment with service-specific rate
+- [x] 7.15 Write unit tests: calculateForPeriod aggregation
+- [x] 7.16 Write unit tests: recordPayment with note
+- [x] 7.17 Write unit tests: manual adjustment with mandatory note
+- [x] 7.18 Write unit tests: zero commission edge case
+- [x] 7.19 Write integration test: appointment → commission calculated
+- [x] 7.20 Write integration test: pay commission → payment recorded
+- [x] 7.21 Coverage: achieve 100% on CommissionService public methods
 
 ## Implementation Details
 
