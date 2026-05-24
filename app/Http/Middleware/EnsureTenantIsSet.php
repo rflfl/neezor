@@ -17,20 +17,16 @@ class EnsureTenantIsSet
             return $next($request);
         }
 
-        $tenantId = null;
-
-        if ($request->hasSession()) {
-            $tenantId = $request->session()->get('tenant_id');
-        }
-
-        $tenantId = $tenantId ?? $user->tenant_id;
+        $tenantId = $user->tenant_id;
 
         if (! $tenantId) {
             return response()->json(['error' => 'Tenant not set'], 403);
         }
 
-        if ($user->tenant_id !== $tenantId) {
-            return response()->json(['error' => 'Unauthorized tenant access'], 403);
+        $requestedTenantId = $request->header('X-Tenant-Id') ?? TenantContext::current();
+
+        if ($requestedTenantId !== null && $requestedTenantId !== $tenantId) {
+            return response()->json(['error' => 'Tenant mismatch'], 403);
         }
 
         TenantContext::setCurrent($tenantId);

@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: Domain/Packages
 type: backend
 complexity: high
@@ -39,23 +39,23 @@ Implement the flexible package system: packages contain multiple services, each 
 </requirements>
 
 ## Subtasks
-- [ ] 5.1 Migration: create `packages` table
-- [ ] 5.2 Migration: create `package_service` pivot table
-- [ ] 5.3 Migration: create `package_sessions` table
-- [ ] 5.4 Create Domain/Packages/Models/Package.php
-- [ ] 5.5 Create Domain/Packages/Models/PackageService.php
-- [ ] 5.6 Create Domain/Packages/Models/PackageSession.php
-- [ ] 5.7 Create Domain/Packages/Contracts/PackageServiceInterface.php
-- [ ] 5.8 Create Domain/Packages/Services/PackageService.php
-- [ ] 5.9 Create PackageController
-- [ ] 5.10 Register package routes
-- [ ] 5.11 Add Package → Service many-to-many relationship
-- [ ] 5.12 Add PackageSession → Appointment relationship
-- [ ] 5.13 Create factories
-- [ ] 5.14 Write unit tests: session debiting logic
-- [ ] 5.15 Write unit tests: expiration check
-- [ ] 5.16 Write unit tests: sessions remaining calculation
-- [ ] 5.17 Write integration test: full package flow (purchase → book → session debited)
+- [x] 5.1 Migration: create `packages` table
+- [x] 5.2 Migration: create `package_service` pivot table
+- [x] 5.3 Migration: create `package_sessions` table
+- [x] 5.4 Create Domain/Packages/Models/Package.php
+- [x] 5.5 Create Domain/Packages/Models/PackageService.php
+- [x] 5.6 Create Domain/Packages/Models/PackageSession.php
+- [x] 5.7 Create Domain/Packages/Contracts/PackageServiceInterface.php
+- [x] 5.8 Create Domain/Packages/Services/PackageService.php
+- [x] 5.9 Create PackageController
+- [x] 5.10 Register package routes
+- [x] 5.11 Add Package → Service many-to-many relationship
+- [x] 5.12 Add PackageSession → Appointment relationship
+- [x] 5.13 Create factories
+- [x] 5.14 Write unit tests: session debiting logic
+- [x] 5.15 Write unit tests: expiration check
+- [x] 5.16 Write unit tests: sessions remaining calculation
+- [x] 5.17 Write integration test: full package flow (purchase → book → session debited)
 
 ## Implementation Details
 

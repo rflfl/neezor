@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: Domain/Notifications + Onboarding
 type: backend
 complexity: medium
@@ -40,24 +40,24 @@ Implement the notification service (Domain/Notifications) with mock WhatsApp dri
 </requirements>
 
 ## Subtasks
-- [ ] 13.1 Create Domain/Notifications/Contracts/NotificationServiceInterface.php
-- [ ] 13.2 Create Domain/Notifications/Drivers/MockWhatsAppDriver.php
-- [ ] 13.3 Create Domain/Notifications/Jobs/SendReminderJob.php
-- [ ] 13.4 Create Domain/Notifications/Jobs/SendConfirmationJob.php
-- [ ] 13.5 Create Domain/Notifications/Jobs/SendCancellationJob.php
-- [ ] 13.6 Create Domain/Notifications/Jobs/SendPackageAlertJob.php
-- [ ] 13.7 Register interface → mock driver binding in AppServiceProvider
-- [ ] 13.8 Update AppointmentService: dispatch reminder job on appointment creation
-- [ ] 13.9 Update AppointmentService: dispatch cancellation job on cancel
-- [ ] 13.10 Implement package alert dispatch logic
-- [ ] 13.11 Create Onboarding/Step1.vue: add professionals
-- [ ] 13.12 Create Onboarding/Step2.vue: add services
-- [ ] 13.13 Create Onboarding/Step3.vue: configure agenda
-- [ ] 13.14 Create Onboarding/Index.vue: step container with navigation
-- [ ] 13.15 Add Setup redirect check in dashboard middleware
-- [ ] 13.16 Write unit tests: MockWhatsAppDriver log assertions
-- [ ] 13.17 Write integration test: appointment triggers reminder job dispatch
-- [ ] 13.18 Configure Laravel queue (database driver already scaffolded)
+- [x] 13.1 Create Domain/Notifications/Contracts/NotificationServiceInterface.php
+- [x] 13.2 Create Domain/Notifications/Drivers/MockWhatsAppDriver.php
+- [x] 13.3 Create Domain/Notifications/Jobs/SendReminderJob.php
+- [x] 13.4 Create Domain/Notifications/Jobs/SendConfirmationJob.php
+- [x] 13.5 Create Domain/Notifications/Jobs/SendCancellationJob.php
+- [x] 13.6 Create Domain/Notifications/Jobs/SendPackageAlertJob.php
+- [x] 13.7 Register interface → mock driver binding in AppServiceProvider
+- [x] 13.8 Update AppointmentService: dispatch reminder job on appointment creation
+- [x] 13.9 Update AppointmentService: dispatch cancellation job on cancel
+- [x] 13.10 Implement package alert dispatch logic
+- [x] 13.11 Create Onboarding/Step1.vue: add professionals
+- [x] 13.12 Create Onboarding/Step2.vue: add services
+- [x] 13.13 Create Onboarding/Step3.vue: configure agenda
+- [x] 13.14 Create Onboarding/Index.vue: step container with navigation
+- [x] 13.15 Add Setup redirect check in dashboard middleware
+- [x] 13.16 Write unit tests: MockWhatsAppDriver log assertions
+- [x] 13.17 Write integration test: appointment triggers reminder job dispatch
+- [x] 13.18 Configure Laravel queue (database driver already scaffolded)
 
 ## Implementation Details
 

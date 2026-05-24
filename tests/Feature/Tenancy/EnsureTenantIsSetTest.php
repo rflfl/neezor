@@ -77,21 +77,21 @@ class EnsureTenantIsSetTest extends TestCase
     {
         $tenantA = Tenant::create([
             'name' => 'Salon A',
-            'slug' => 'salon-a',
+            'slug' => 'salon-a-' . uniqid(),
             'subscription_plan' => 'basic',
             'status' => 'active',
         ]);
 
         $tenantB = Tenant::create([
             'name' => 'Salon B',
-            'slug' => 'salon-b',
+            'slug' => 'salon-b-' . uniqid(),
             'subscription_plan' => 'basic',
             'status' => 'active',
         ]);
 
         $user = User::withoutGlobalScopes()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'test' . uniqid() . '@example.com',
             'password' => bcrypt('password'),
             'tenant_id' => $tenantA->id,
             'role' => 'admin',
@@ -100,8 +100,8 @@ class EnsureTenantIsSetTest extends TestCase
         $middleware = new EnsureTenantIsSet;
         $request = Request::create('/dashboard', 'GET');
         $request->setUserResolver(fn () => $user);
-        $request->setLaravelSession($this->app['session.store']);
-        $request->session()->put('tenant_id', $tenantB->id);
+
+        TenantContext::setCurrent($tenantB->id);
 
         $response = $middleware->handle($request, fn ($req) => response('OK'));
 

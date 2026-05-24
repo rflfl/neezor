@@ -5,18 +5,18 @@
 | # | Title | Status | Complexity | Dependencies |
 |---|---|---|---|---|
 | 01 | Multi-tenancy Foundation | completed | high | — |
-| 02 | User + Professional Models | pending | medium | task_01 |
-| 03 | Domain/Services + Domain/Customers | pending | medium | task_01 |
-| 04 | Domain/Scheduling — Core | pending | high | task_02, task_03 |
-| 05 | Domain/Packages | pending | high | task_04 |
-| 06 | Domain/Cashbox | pending | high | task_04 |
-| 07 | Domain/Commission | pending | high | task_06 |
-| 08 | Domain/Expenses | pending | medium | task_06 |
-| 09 | Frontend: Calendar + Appointment CRUD | pending | high | task_07, task_08 |
-| 10 | Frontend: Clients + Services + Packages | pending | medium | task_09 |
-| 11 | Frontend: Cashbox + Commissions + DRE | pending | medium | task_09 |
+| 02 | User + Professional Models | completed | medium | task_01 |
+| 03 | Domain/Services + Domain/Customers | completed | medium | task_01 |
+| 04 | Domain/Scheduling — Core | completed | high | task_02, task_03 |
+| 05 | Domain/Packages | completed | high | task_04 |
+| 06 | Domain/Cashbox | completed | high | task_04 |
+| 07 | Domain/Commission | completed | high | task_06 |
+| 08 | Domain/Expenses | completed | medium | task_06 |
+| 09 | Frontend: Calendar + Appointment CRUD | completed | high | task_07, task_08 |
+| 10 | Frontend: Clients + Services + Packages | completed | medium | task_09 |
+| 11 | Frontend: Cashbox + Commissions + DRE | completed | medium | task_09 |
 | 12 | Public Booking Portal | pending | high | task_09 |
-| 13 | Domain/Notifications + Onboarding | pending | medium | task_09 |
+| 13 | Domain/Notifications + Onboarding | completed | medium | task_09 |
 
 ## Build Order
 

@@ -17,10 +17,20 @@ class HandleInertiaRequests extends Middleware
 
     public function share(Request $request): array
     {
+        $tenantId = TenantContext::current();
+
+        if ($tenantId === null) {
+            $tenantId = $request->user()?->tenant_id;
+        }
+
+        if ($tenantId === null) {
+            return [...parent::share($request)];
+        }
+
         return [
             ...parent::share($request),
             'tenant' => fn () => $request->user()?->tenant,
-            'tenant_id' => fn () => TenantContext::current(),
+            'tenant_id' => $tenantId,
         ];
     }
 }

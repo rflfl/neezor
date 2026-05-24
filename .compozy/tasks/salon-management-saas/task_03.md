@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: Domain/Services + Domain/Customers
 type: backend
 complexity: medium
@@ -37,22 +37,22 @@ Create the Service catalog domain (Domain/Services) and Client management domain
 </requirements>
 
 ## Subtasks
-- [ ] 3.1 Migration: create `services` table
-- [ ] 3.2 Create Domain/Services/Models/Service.php with tenant traits
-- [ ] 3.3 Create Domain/Services/Services/ServiceService.php (domain logic)
-- [ ] 3.4 Create Domain/Services/Contracts/ServiceServiceInterface.php
-- [ ] 3.5 Create ServiceController
-- [ ] 3.6 Register service routes
-- [ ] 3.7 Migration: create `clients` table
-- [ ] 3.8 Create Domain/Customers/Models/Client.php with tenant traits
-- [ ] 3.9 Create Domain/Customers/Services/ClientService.php
-- [ ] 3.10 Create Domain/Customers/Contracts/ClientServiceInterface.php
-- [ ] 3.11 Create ClientController
-- [ ] 3.12 Register client routes
-- [ ] 3.13 Create ClientFactory
-- [ ] 3.14 Write unit tests for Service model and domain logic
-- [ ] 3.15 Write unit tests for Client model (including inactive detection)
-- [ ] 3.16 Write feature tests for both CRUD endpoints
+- [x] 3.1 Migration: create `services` table
+- [x] 3.2 Create Domain/Services/Models/Service.php with tenant traits
+- [x] 3.3 Create Domain/Services/Services/ServiceService.php (domain logic)
+- [x] 3.4 Create Domain/Services/Contracts/ServiceServiceInterface.php
+- [x] 3.5 Create ServiceController
+- [x] 3.6 Register service routes
+- [x] 3.7 Migration: create `clients` table
+- [x] 3.8 Create Domain/Customers/Models/Client.php with tenant traits
+- [x] 3.9 Create Domain/Customers/Services/ClientService.php
+- [x] 3.10 Create Domain/Customers/Contracts/ClientServiceInterface.php
+- [x] 3.11 Create ClientController
+- [x] 3.12 Register client routes
+- [x] 3.13 Create ClientFactory
+- [x] 3.14 Write unit tests for Service model and domain logic
+- [x] 3.15 Write unit tests for Client model (including inactive detection)
+- [x] 3.16 Write feature tests for both CRUD endpoints
 
 ## Implementation Details
 

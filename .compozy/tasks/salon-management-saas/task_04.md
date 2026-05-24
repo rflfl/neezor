@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: "Domain Scheduling — Core"
 type: backend
 complexity: high
@@ -38,20 +38,20 @@ Build the custom scheduling engine (Domain/Scheduling) from scratch. This is the
 </requirements>
 
 ## Subtasks
-- [ ] 4.1 Migration: create `appointments` table with composite unique index
-- [ ] 4.2 Create Domain/Scheduling/Models/Appointment.php
-- [ ] 4.3 Create Domain/Scheduling/Contracts/AvailabilityServiceInterface.php
-- [ ] 4.4 Create Domain/Scheduling/Services/AvailabilityService.php — slot generation logic
-- [ ] 4.5 Create Domain/Scheduling/Services/AppointmentService.php — CRUD + state transitions
-- [ ] 4.6 Create AppointmentController
-- [ ] 4.7 Register appointment routes
-- [ ] 4.8 Add Appointment → Client, Professional, Service relationships
-- [ ] 4.9 Create AppointmentFactory
-- [ ] 4.10 Write unit tests: availability slot generation (all duration combinations)
-- [ ] 4.11 Write unit tests: conflict detection (overlapping appointments)
-- [ ] 4.12 Write unit tests: status transitions
-- [ ] 4.13 Write integration tests: create appointment → visible in calendar
-- [ ] 4.14 Write integration test: double-booking attempt returns error
+- [x] 4.1 Migration: create `appointments` table with composite unique index
+- [x] 4.2 Create Domain/Scheduling/Models/Appointment.php
+- [x] 4.3 Create Domain/Scheduling/Contracts/AvailabilityServiceInterface.php
+- [x] 4.4 Create Domain/Scheduling/Services/AvailabilityService.php — slot generation logic
+- [x] 4.5 Create Domain/Scheduling/Services/AppointmentService.php — CRUD + state transitions
+- [x] 4.6 Create AppointmentController
+- [x] 4.7 Register appointment routes
+- [x] 4.8 Add Appointment → Client, Professional, Service relationships
+- [x] 4.9 Create AppointmentFactory
+- [x] 4.10 Write unit tests: availability slot generation (all duration combinations)
+- [x] 4.11 Write unit tests: conflict detection (overlapping appointments)
+- [x] 4.12 Write unit tests: status transitions
+- [x] 4.13 Write integration tests: create appointment → visible in calendar
+- [x] 4.14 Write integration test: double-booking attempt returns error
 
 ## Implementation Details
 

@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: Domain/Expenses
 type: backend
 complexity: medium
@@ -37,18 +37,18 @@ Build the expenses domain (Domain/Expenses) and DRE (Demonstrativo de Resultado)
 </requirements>
 
 ## Subtasks
-- [ ] 8.1 Migration: create `expenses` table (category_id references expense_categories)
-- [ ] 8.2 Create Domain/Expenses/Models/Expense.php
-- [ ] 8.3 Create Domain/Expenses/Contracts/DreServiceInterface.php
-- [ ] 8.4 Create Domain/Expenses/Services/DreService.php
-- [ ] 8.5 Create ExpenseController
-- [ ] 8.6 Register expense routes and DRE route
-- [ ] 8.7 Create ExpenseFactory
-- [ ] 8.8 Write unit tests: DRE calculation with revenue, commissions, expenses
-- [ ] 8.9 Write unit tests: profit margin calculation
-- [ ] 8.10 Write unit tests: zero revenue edge case
-- [ ] 8.11 Write integration test: expense CRUD
-- [ ] 8.12 Write integration test: DRE report for known month
+- [x] 8.1 Migration: create `expenses` table (category_id references expense_categories)
+- [x] 8.2 Create Domain/Expenses/Models/Expense.php
+- [x] 8.3 Create Domain/Expenses/Contracts/DreServiceInterface.php
+- [x] 8.4 Create Domain/Expenses/Services/DreService.php
+- [x] 8.5 Create ExpenseController
+- [x] 8.6 Register expense routes and DRE route
+- [x] 8.7 Create ExpenseFactory
+- [x] 8.8 Write unit tests: DRE calculation with revenue, commissions, expenses
+- [x] 8.9 Write unit tests: profit margin calculation
+- [x] 8.10 Write unit tests: zero revenue edge case
+- [x] 8.11 Write integration test: expense CRUD
+- [x] 8.12 Write integration test: DRE report for known month
 
 ## Implementation Details
 
