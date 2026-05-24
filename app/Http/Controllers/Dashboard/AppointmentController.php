@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Domain\Customers\Models\Client;
 use App\Domain\Scheduling\Models\Appointment;
 use App\Domain\Scheduling\Services\AppointmentService;
+use App\Domain\Services\Models\Service;
 use App\Http\Controllers\Controller;
+use App\Models\Professional;
 use App\Services\TenantContext;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,11 +28,31 @@ class AppointmentController extends Controller
             ? \Carbon\Carbon::parse($request->query('date'))
             : \Carbon\Carbon::today();
 
+        $professionalId = $request->query('professional');
+
         $appointments = $this->appointmentService->getByDate($tenantId, $date);
+        $professionals = Professional::all()->map(fn($p) => [
+            'id' => $p->id,
+            'name' => $p->name,
+        ]);
+        $clients = Client::all()->map(fn($c) => [
+            'id' => $c->id,
+            'name' => $c->name,
+        ]);
+        $services = Service::all()->map(fn($s) => [
+            'id' => $s->id,
+            'name' => $s->name,
+            'price' => $s->price,
+            'duration_minutes' => $s->duration_minutes,
+        ]);
 
         return Inertia::render('Dashboard/Calendar/Index', [
             'appointments' => $appointments,
             'selectedDate' => $date->toDateString(),
+            'professionals' => $professionals,
+            'clients' => $clients,
+            'services' => $services,
+            'selectedProfessionalId' => $professionalId ? (int) $professionalId : null,
         ]);
     }
 

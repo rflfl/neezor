@@ -62,6 +62,8 @@ Route::middleware([
 
     Route::get('/dashboard/calendar', [AppointmentController::class, 'index'])
         ->name('dashboard.calendar.index');
+    Route::get('/dashboard/calendar/professional/{professional}', [AppointmentController::class, 'index'])
+        ->name('dashboard.calendar.professional');
     Route::get('/dashboard/calendar/{appointment}', [AppointmentController::class, 'show'])
         ->name('dashboard.calendar.show');
     Route::post('/dashboard/calendar', [AppointmentController::class, 'store'])

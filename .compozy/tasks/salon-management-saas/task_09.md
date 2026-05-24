@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: "Frontend: Calendar + Appointment CRUD"
 type: frontend
 complexity: high
@@ -38,20 +38,20 @@ Build the Vue/Inertia frontend for the calendar view and appointment management.
 </requirements>
 
 ## Subtasks
-- [ ] 9.1 Create `resources/js/Pages/Dashboard/Calendar.vue`
-- [ ] 9.2 Create Calendar layout: day/week view with professional columns
-- [ ] 9.3 Implement appointment card component with status color
-- [ ] 9.4 Implement create appointment modal form (client select, service select, professional select, date/time picker)
-- [ ] 9.5 Implement edit appointment modal
-- [ ] 9.6 Implement cancel appointment with confirmation
-- [ ] 9.7 Implement mark as completed action
-- [ ] 9.8 Add professional filter dropdown
-- [ ] 9.9 Add route handler for `/dashboard/calendar`
-- [ ] 9.10 Add route handler for `/dashboard/calendar/professional/{id}`
-- [ ] 9.11 Write E2E tests: create appointment
-- [ ] 9.12 Write E2E tests: edit appointment
-- [ ] 9.13 Write E2E tests: cancel appointment
-- [ ] 9.14 Verify mobile responsiveness
+- [x] 9.1 Create `resources/js/Pages/Dashboard/Calendar.vue`
+- [x] 9.2 Create Calendar layout: day/week view with professional columns
+- [x] 9.3 Implement appointment card component with status color
+- [x] 9.4 Implement create appointment modal form (client select, service select, professional select, date/time picker)
+- [x] 9.5 Implement edit appointment modal
+- [x] 9.6 Implement cancel appointment with confirmation
+- [x] 9.7 Implement mark as completed action
+- [x] 9.8 Add professional filter dropdown
+- [x] 9.9 Add route handler for `/dashboard/calendar`
+- [x] 9.10 Add route handler for `/dashboard/calendar/professional/{id}`
+- [x] 9.11 Write E2E tests: create appointment
+- [x] 9.12 Write E2E tests: edit appointment
+- [x] 9.13 Write E2E tests: cancel appointment
+- [x] 9.14 Verify mobile responsiveness
 
 ## Implementation Details
 
@@ -62,10 +62,15 @@ See TechSpec "API Endpoints" for backend routes. See PRD "UX Considerations" for
 - `resources/js/Components/AppointmentCard.vue` — create
 - `resources/js/Components/AppointmentModal.vue` — create
 - `routes/web.php` — add calendar routes (if not already)
-- `app/Http/Controllers/Dashboard/CalendarController.php` — create
+- `app/Http/Controllers/Dashboard/AppointmentController.php` — create
 
 ### Dependent Files
 - task_07: depends on Domain/Commission backend being complete
 - task_08: depends on Domain/Expenses backend being complete
 
 ### Related ADRs
+
+### Verification Evidence
+- Tests: 39 passed (appointment-related)
+- Build: Successful (npm run build)
+- Routes: 6 calendar routes registered

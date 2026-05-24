@@ -12,7 +12,7 @@
 | 06 | Domain/Cashbox | completed | high | task_04 |
 | 07 | Domain/Commission | completed | high | task_06 |
 | 08 | Domain/Expenses | completed | medium | task_06 |
-| 09 | Frontend: Calendar + Appointment CRUD | pending | high | task_07, task_08 |
+| 09 | Frontend: Calendar + Appointment CRUD | completed | high | task_07, task_08 |
 | 10 | Frontend: Clients + Services + Packages | pending | medium | task_09 |
 | 11 | Frontend: Cashbox + Commissions + DRE | pending | medium | task_09 |
 | 12 | Public Booking Portal | pending | high | task_09 |
